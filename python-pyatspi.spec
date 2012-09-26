@@ -10,7 +10,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/pyatspi/2.6/%{module}-%{version}
 # Source0-md5:	95c48cae83d1f6d6cd13615df14124e5
 URL:		http://www.linuxfoundation.org/en/AT-SPI_on_D-Bus
 BuildRequires:	pkgconfig
-BuildRequires:	python-devel >= 1:2.4
+BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-distribute
 BuildRequires:	python-pygobject3-devel >= 3.0.0
 BuildRequires:	rpm-pythonprov
