@@ -3,7 +3,7 @@ Summary:	AT-SPI Python bindings
 Summary(pl.UTF-8):	Wiązania AT-SPI dla Pythona
 Name:		python-%{module}
 Version:	2.8.0
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		Development/Languages/Python
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/pyatspi/2.8/%{module}-%{version}.tar.xz
@@ -17,7 +17,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	at-spi2-core >= 2.8.0
-Requires:	python-dbus
+Requires:	gobject-introspection
 Requires:	python-modules
 Requires:	python-pygobject3 >= 3.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -28,17 +28,46 @@ This package provides AT-SPI Python bindings.
 %description -l pl.UTF-8
 Ten pakiet dostarcza wiązania AT-SPI dla Pythona.
 
+%package -n python3-%{module}
+Summary:	AT-SPI Python 3 bindings
+Summary(pl.UTF-8):	Wiązania AT-SPI dla Pythona 3
+Group:		Development/Languages/Python
+Requires:	at-spi2-core >= 2.8.0
+Requires:	gobject-introspection
+Requires:	python3-modules
+Requires:	python3-pygobject3 >= 3.0.0
+
+%description -n python3-%{module}
+This package provides AT-SPI Python 3 bindings.
+
+%description -n python3-%{module} -l pl.UTF-8
+Ten pakiet dostarcza wiązania AT-SPI dla Pythona 3.
+
 %prep
 %setup -q -n %{module}-%{version}
 
 %build
-%configure
+mkdir py3
+cd py3
+../%configure \
+	--with-python="/usr/bin/python3"
 %{__make}
+cd ..
+
+mkdir py2
+cd py2
+../%configure \
+	--with-python="%{__python}"
+%{__make}
+cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C py3 install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+%{__make} -C py2 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
@@ -48,3 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
 %{py_sitescriptdir}/pyatspi
+
+%files -n python3-%{module}
+%defattr(644,root,root,755)
+%{py3_sitescriptdir}/pyatspi
