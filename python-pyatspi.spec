@@ -7,12 +7,12 @@
 Summary:	AT-SPI Python bindings
 Summary(pl.UTF-8):	Wiązania AT-SPI dla Pythona
 Name:		python-%{module}
-Version:	2.10.0
+Version:	2.12.0
 Release:	1
 License:	LGPL v2
 Group:		Development/Languages/Python
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/pyatspi/2.10/%{module}-%{version}.tar.xz
-# Source0-md5:	188ac6479e824ae2c36dd224a08e036b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/pyatspi/2.12/%{module}-%{version}.tar.xz
+# Source0-md5:	cb2115a7ad93bedf39cc7ae8d20735cf
 URL:		https://www.linuxfoundation.org/en/AT-SPI_on_D-Bus
 BuildRequires:	pkgconfig
 BuildRequires:	python-pygobject3-common-devel >= 3.0.0
@@ -26,7 +26,7 @@ BuildRequires:	python-distribute
 %if %{with python3}
 BuildRequires:	python3-devel >= 3.2
 %endif
-Requires:	at-spi2-core >= 2.8.0
+Requires:	at-spi2-core >= 2.12.0
 Requires:	gobject-introspection
 Requires:	python-modules
 Requires:	python-pygobject3 >= 3.0.0
@@ -42,7 +42,7 @@ Ten pakiet dostarcza wiązania AT-SPI dla Pythona.
 Summary:	AT-SPI Python 3 bindings
 Summary(pl.UTF-8):	Wiązania AT-SPI dla Pythona 3
 Group:		Development/Languages/Python
-Requires:	at-spi2-core >= 2.8.0
+Requires:	at-spi2-core >= 2.12.0
 Requires:	gobject-introspection
 Requires:	python3-modules
 Requires:	python3-pygobject3 >= 3.0.0
