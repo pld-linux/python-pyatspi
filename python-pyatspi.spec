@@ -21,10 +21,9 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.6
-BuildRequires:	python-distribute
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel >= 3.2
+BuildRequires:	python3-devel >= 1:3.2
 %endif
 Requires:	at-spi2-core >= 2.12.0
 Requires:	gobject-introspection
