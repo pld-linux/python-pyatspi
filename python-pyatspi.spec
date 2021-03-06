@@ -3,7 +3,7 @@
 %bcond_without	python2		# Python 2.x module
 %bcond_without	python3		# Python 3.x module
 #
-%define 	module	pyatspi
+%define		module	pyatspi
 Summary:	AT-SPI Python bindings
 Summary(pl.UTF-8):	Wiązania AT-SPI dla Pythona
 Name:		python-%{module}
@@ -29,6 +29,7 @@ Requires:	at-spi2-core >= 2.12.0
 Requires:	gobject-introspection
 Requires:	python-modules
 Requires:	python-pygobject3 >= 3.0.0
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,19 +57,28 @@ Ten pakiet dostarcza wiązania AT-SPI dla Pythona 3.
 %setup -q -n %{module}-%{version}
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %if %{with python3}
-mkdir py3
+mkdir -p py3
 cd py3
 ../%configure \
-	--with-python="/usr/bin/python3"
+	--host=%{_host} \
+	--build=%{_build} \
+	--with-python="%{__python3}"
 %{__make}
 cd ..
 %endif
 
 %if %{with python2}
-mkdir py2
+mkdir -p py2
 cd py2
 ../%configure \
+	--host=%{_host} \
+	--build=%{_build} \
 	--with-python="%{__python}"
 %{__make}
 cd ..
@@ -101,5 +111,5 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-%{module}
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
-%{py3_sitedir}/pyatspi
+%{py3_sitescriptdir}/pyatspi
 %endif
