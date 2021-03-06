@@ -66,8 +66,8 @@ Ten pakiet dostarcza wiązania AT-SPI dla Pythona 3.
 mkdir -p py3
 cd py3
 ../%configure \
-	--host=%{_host} \
-	--build=%{_build} \
+	--host=%{_host_alias} \
+	--build=%{_build_alias} \
 	--with-python="%{__python3}"
 %{__make}
 cd ..
@@ -77,8 +77,8 @@ cd ..
 mkdir -p py2
 cd py2
 ../%configure \
-	--host=%{_host} \
-	--build=%{_build} \
+	--host=%{_host_alias} \
+	--build=%{_build_alias} \
 	--with-python="%{__python}"
 %{__make}
 cd ..
