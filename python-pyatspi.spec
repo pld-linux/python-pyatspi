@@ -7,12 +7,12 @@
 Summary:	AT-SPI Python bindings
 Summary(pl.UTF-8):	Wiązania AT-SPI dla Pythona
 Name:		python-%{module}
-Version:	2.46.0
+Version:	2.46.1
 Release:	1
 License:	LGPL v2
 Group:		Development/Languages/Python
 Source0:	https://download.gnome.org/sources/pyatspi/2.46/%{module}-%{version}.tar.xz
-# Source0-md5:	2b1ca71ad75a900ed0eb6d6d012f8bfc
+# Source0-md5:	0f2bfade055457cb0c2389fd46d1ad70
 URL:		https://wiki.linuxfoundation.org/accessibility/d-bus
 BuildRequires:	pkgconfig
 BuildRequires:	python-pygobject3-common-devel >= 3.0.0
@@ -103,13 +103,13 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{py_sitescriptdir}/pyatspi
 %endif
 
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{py3_sitescriptdir}/pyatspi
 %endif
