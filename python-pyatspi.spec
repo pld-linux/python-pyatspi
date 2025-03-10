@@ -8,7 +8,7 @@ Summary:	AT-SPI Python bindings
 Summary(pl.UTF-8):	Wiązania AT-SPI dla Pythona
 Name:		python-%{module}
 Version:	2.46.1
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		Development/Languages/Python
 Source0:	https://download.gnome.org/sources/pyatspi/2.46/%{module}-%{version}.tar.xz
